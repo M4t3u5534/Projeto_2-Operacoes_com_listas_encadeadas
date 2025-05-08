@@ -71,9 +71,9 @@ public class MainApl2 {
 		
 		try (FileWriter writer = new FileWriter("dados.csv")) {
                 writer.write(contents);
-            } catch (IOException e) {
+        } catch (IOException e) {
                 e.printStackTrace();
-            }
+        }
 		
 		Node test1 = fixedList.getNode("23.S1-999");
 		System.out.println(">>>>>>>>>> test1 >>>>>>>>>>\n" + test1 + "\n<<<<<<<<<< test1 <<<<<<<<<<\n");
