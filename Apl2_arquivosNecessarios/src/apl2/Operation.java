@@ -21,16 +21,16 @@ public class Operation {
 	public static DLinkedList map(final LinkedListOriginal original) {
 
 		DLinkedList mapeada = new DLinkedList();
-		NodeOriginal elemento = new NodeOriginal();
+		NodeOriginal elemento = original.getHead();
 
-		while(original.getHead() != null){
-			elemento = original.removeHead();
+		while(elemento != null){
 			if (elemento.getInteiro() == -1 || elemento.getDecimo() == -1) {
-				mapeada.append(("25.S1-" + elemento.getId()), elemento.getNome(), (float)99.9);
+				mapeada.append(("23.S1-" + elemento.getId()), elemento.getNome(), (float)99.9);
 			}
 			else{
-				mapeada.append(("25.S1-" + elemento.getId()), elemento.getNome(), (elemento.getInteiro() + ((float)elemento.getDecimo() / 10)));
+				mapeada.append(("23.S1-" + elemento.getId()), elemento.getNome(), (elemento.getInteiro() + ((float)elemento.getDecimo() / 10)));
 			}
+			elemento = elemento.getNext();
 		}
 		return mapeada;
 	}
@@ -47,12 +47,12 @@ public class Operation {
 	public static DLinkedList filterRemoveNonGraded(final DLinkedList data) {
 
 		DLinkedList valida = new DLinkedList();
-		Node elemento = new Node();
+		Node elemento = data.getHead();
 
-		while (data.getHead() != null) {
-			elemento = data.removeHead();
+		while (elemento != null) {
 			if (elemento.getNota() != (float)99.9)
 				valida.append(elemento.getId(), elemento.getNome(), elemento.getNota());
+			elemento = elemento.getNext();
 		}
 		return valida;
 	}
@@ -69,12 +69,12 @@ public class Operation {
 	public static DLinkedList filterRemoveGraded(final DLinkedList data) {
 		
 		DLinkedList invalida = new DLinkedList();
-		Node elemento = new Node();
+		Node elemento = data.getHead();
 
-		while (data.getHead() != null) {
-			elemento = data.removeHead();
+		while (elemento != null) {
 			if (elemento.getNota() == (float)99.9)
 				invalida.append(elemento.getId(), elemento.getNome(), elemento.getNota());
+			elemento = elemento.getNext();
 		}
 		return invalida;
 	}
@@ -93,12 +93,12 @@ public class Operation {
 	public static DLinkedList filterRemoveBelowAverage(final DLinkedList data, float average) {
 		
 		DLinkedList acima = new DLinkedList();
-		Node elemento = new Node();
+		Node elemento = data.getHead();
 
-		while (data.getHead() != null) {
-			elemento = data.removeHead();
+		while (elemento != null) {
 			if (elemento.getNota() > average)
 				acima.append(elemento.getId(), elemento.getNome(), elemento.getNota());
+			elemento = elemento.getNext();
 		}
 		return acima;
 	}
@@ -116,12 +116,12 @@ public class Operation {
 
 		float soma = 0;
 		int quantidade = 0;
-		Node elemento = new Node();
+		Node elemento = data.getHead();
 
-		while (data.getHead() != null) {
-			elemento = data.removeHead();
+		while (elemento != null) {
 			soma += elemento.getNota();
 			quantidade++;
+			elemento = elemento.getNext();
 		}
 		return soma / quantidade;
 	}
