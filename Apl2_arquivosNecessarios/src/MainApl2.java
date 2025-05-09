@@ -23,7 +23,7 @@ public class MainApl2 {
 	public static void main(String[] args) {
 		LinkedListOriginal list = new LinkedListOriginal();
 
-		File file = new File("C:\\Users\\INTEL\\Documents\\Exercícios\\Java\\Projeto_2\\Projeto_2-Operacoes_com_listas_encadeadas\\Apl2_arquivosNecessarios\\dados.txt");
+		File file = new File("/workspaces/Projeto_2-Operacoes_com_listas_encadeadas/Apl2_arquivosNecessarios/dados.txt");
 		try {
 			Scanner scanner = new Scanner(file);
 			while (scanner.hasNextLine()) {

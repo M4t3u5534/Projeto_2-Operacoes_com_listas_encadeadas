@@ -48,6 +48,7 @@ public class DLinkedList {
 			head = node;
 		} else {
 			tail.setNext(node);
+			node.setPrevious(tail);
 		}
 		
 		tail = node;
@@ -76,14 +77,8 @@ public class DLinkedList {
 		if (head == tail)
 			return removeHead();
 		
-		Node toRemove = head;
-		Node previous = null;
-		while (toRemove != tail) {
-			previous = toRemove;
-			toRemove = toRemove.getNext();
-		}
-		
-		tail = previous;
+		Node toRemove = tail;
+		tail = toRemove.getPrevious();
 		tail.setNext(null);
 		--count;
 		
@@ -93,9 +88,7 @@ public class DLinkedList {
 	
 	public Node removeNode(String id) {
 		Node toRemove = head;
-		Node previous = null;
 		while (toRemove != null && !id.equals(toRemove.getId())) {
-			previous = toRemove;
 			toRemove = toRemove.getNext();
 		}
 		
@@ -111,7 +104,7 @@ public class DLinkedList {
 			return removeTail();
 		}
 		
-		previous.setNext(toRemove.getNext());
+		(toRemove.getPrevious()).setNext(toRemove.getNext());
 		--count;
 		
 		toRemove.setNext(null);		
