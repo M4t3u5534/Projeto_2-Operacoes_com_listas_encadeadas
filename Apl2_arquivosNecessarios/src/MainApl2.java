@@ -5,8 +5,12 @@
 //*************************** ATENÇÃO! ****************************
 // arquivo: src/MainApl2.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
-// TODO: Listar todas as referências consultadas para solucionar a atividade.
+// Mateus Ribeiro Cerqueira - 10443901
+// Pedro Henrique Carvalho Pereira - 10418861
+
+// Sites usados para consultar informações sobre manipulação de arquivos em java:
+// https://www-geeksforgeeks-org.translate.goog/writing-a-csv-file-in-java-using-opencsv/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=sge#:~:text=Crie%20uma%20inst%C3%A2ncia%20de%20CSVWriter,close()%20da%20classe%20CSVWriter
+// https://pt.stackoverflow.com/questions/303861/ler-ficheiro-localizado-noutro-package
 
 import java.io.File;
 import java.io.FileWriter;

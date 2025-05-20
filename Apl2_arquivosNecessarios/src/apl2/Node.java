@@ -1,6 +1,7 @@
 // arquivo: src/apl2/Node.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+// Mateus Ribeiro Cerqueira - 10443901
+// Pedro Henrique Carvalho Pereira - 10418861
 
 package apl2;
 
