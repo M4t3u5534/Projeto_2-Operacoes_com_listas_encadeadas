@@ -116,15 +116,13 @@ public class Operation {
 	public static float reduce(final DLinkedList data) {
 
 		float soma = 0;
-		int quantidade = 0;
 		Node elemento = data.getHead();
 
 		while (elemento != null) {
 			soma += elemento.getNota();
-			quantidade++;
 			elemento = elemento.getNext();
 		}
-		return soma / quantidade;
+		return soma / data.count();
 	}
 
 	/**
