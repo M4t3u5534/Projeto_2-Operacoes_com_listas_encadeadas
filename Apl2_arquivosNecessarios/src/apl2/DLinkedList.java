@@ -84,6 +84,7 @@ public class DLinkedList {
 		--count;
 		
 		toRemove.setNext(null);
+		toRemove.setPrevious(null);
 		return toRemove;
 	}
 	
@@ -106,6 +107,10 @@ public class DLinkedList {
 		}
 		
 		(toRemove.getPrevious()).setNext(toRemove.getNext());
+
+		if (toRemove.getNext() != null) {
+			(toRemove.getNext()).setPrevious(toRemove.getPrevious());
+		}
 		--count;
 		
 		toRemove.setNext(null);		

@@ -26,8 +26,9 @@ public class MainApl2 {
 	
 	public static void main(String[] args) {
 		LinkedListOriginal list = new LinkedListOriginal();
+		Scanner input = new Scanner(System.in);
 
-		File file = new File("/workspaces/Projeto_2-Operacoes_com_listas_encadeadas/Apl2_arquivosNecessarios/dados.txt");
+		File file = new File("C:\\Users\\INTEL\\Documents\\Exercícios\\Java\\Projeto_2\\Projeto_2-Operacoes_com_listas_encadeadas-1\\Apl2_arquivosNecessarios\\dados.txt");
 		try {
 			Scanner scanner = new Scanner(file);
 			while (scanner.hasNextLine()) {
@@ -118,6 +119,87 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		testList.clear();
 		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");
+
+
+
+		// Processamento das listas
+        DLinkedList fixedList_menu = Operation.map(list);
+        DLinkedList filteredGradedList_menu = Operation.filterRemoveNonGraded(fixedList_menu);
+        DLinkedList filteredNonGradedList_menu = Operation.filterRemoveGraded(fixedList_menu);
+        float average_menu = Operation.reduce(filteredGradedList_menu);
+        DLinkedList aboveAverageList_menu = Operation.filterRemoveBelowAverage(filteredGradedList_menu, average_menu);
+        String contents_menu = Operation.mapToString(fixedList_menu);
+
+        // Geração do arquivo CSV
+        try (FileWriter writer = new FileWriter("dados.csv")) {
+            writer.write(contents_menu);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Menu interativo
+        int opcao = -1;
+
+        while (opcao != 8) {
+            System.out.println("\n===== Sistema Conversor de Notas =====");
+            System.out.println("1) Dados originais");
+            System.out.println("2) Dados convertidos");
+            System.out.println("3) Lista notas filtradas válidas");
+            System.out.println("4) Lista notas filtradas inválidas");
+            System.out.println("5) Média de notas válidas");
+            System.out.println("6) Notas acima da média");
+            System.out.println("7) Lista mapeada para uma única string");
+            System.out.println("8) Sair");
+            System.out.print("Escolha uma opção: ");
+
+            opcao = input.nextInt();
+            System.out.println();
+
+            switch (opcao) {
+                case 1:
+                    System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
+                    System.out.println(list);
+                    System.out.println("<<<<<<<<<< Dados originais (sistema legado) <<<<<<<<<<");
+                    break;
+                case 2:
+                    System.out.println(">>>>>>>>>> Dados convertidos >>>>>>>>>>");
+                    System.out.println(fixedList_menu);
+                    System.out.println("<<<<<<<<<< Dados convertidos <<<<<<<<<<");
+                    break;
+                case 3:
+                    System.out.println(">>>>>>>>>> Lista filtrada (somente notas válidas) >>>>>>>>>>");
+                    System.out.println(filteredGradedList_menu);
+                    System.out.println("<<<<<<<<<< Lista filtrada (somente notas válidas) <<<<<<<<<<");
+                    break;
+                case 4:
+                    System.out.println(">>>>>>>>>> Lista filtrada (somente 'ausência de nota') >>>>>>>>>>");
+                    System.out.println(filteredNonGradedList_menu);
+                    System.out.println("<<<<<<<<<< Lista filtrada (somente 'ausência de nota') <<<<<<<<<<");
+                    break;
+                case 5:
+                    System.out.println(">>>>>>>>>> Média das notas válidas >>>>>>>>>>");
+                    System.out.printf("%.2f\n", average_menu);
+                    System.out.println("<<<<<<<<<< Média das notas válidas <<<<<<<<<<");
+                    break;
+                case 6:
+                    System.out.println(">>>>>>>>>> Lista com notas acima da média >>>>>>>>>>");
+                    System.out.println(aboveAverageList_menu);
+                    System.out.println("<<<<<<<<<< Lista com notas acima da média <<<<<<<<<<");
+                    break;
+                case 7:
+                    System.out.println(">>>>>>>>>> Lista mapeada para uma única string >>>>>>>>>>");
+                    System.out.println(contents_menu);
+                    System.out.println("<<<<<<<<<< Lista mapeada para uma única string <<<<<<<<<<");
+                    break;
+                case 8:
+                    System.out.println("Sistema finalizado.");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+
+        input.close();
 	}
 
 }
